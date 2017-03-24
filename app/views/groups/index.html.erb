@@ -1,0 +1,24 @@
+<div class="pull-right">
+  <%= link_to("增加群组", new_group_path, class: :"btn btn-primary btn-sm") %>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>标题</th>
+      <th>创建时间</th>
+      <th>创建者</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td><%= group.id %></td>
+        <td><%= link_to(group.title, group_path(group)) %></td>
+        <td><%= group.created_at %></td>
+        <td><%= group.user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

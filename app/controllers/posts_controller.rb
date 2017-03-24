@@ -39,7 +39,7 @@ class PostsController < ApplicationController
     @post.user = current_user
     @post.group = @group
     if @post.update(post_params)
-      redirect_to group_path(@group), notice: "文章更新成功"
+      redirect_to account_posts_path, notice: "文章更新成功"
     else
       render :edit
     end
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
     @post.group = @group
     @post.user = current_user
     @post.destroy
-    redirect_to group_path(@group), alert: "文章已删除"
+    redirect_to account_posts_path, alert: "文章已删除"
   end
 
   private

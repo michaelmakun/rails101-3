@@ -21,7 +21,7 @@
       <th>#</th>
       <th>文章内容</th>
       <th>发表时间</th>
-      <th>管理选项</th>
+      <th>作者</th>
     </tr>
   </thead>
   <tbody>
@@ -30,12 +30,7 @@
         <td><%= post.id %></td>
         <td><%= post.content %></td>
         <td><%= post.created_at %></td>
-        <td>
-          <% if current_user && current_user == post.user %>
-            <%= link_to("编缉文章", edit_group_post_path(post.group,post), class: :"btn btn-success btn-xs") %>
-            <%= link_to("删除文章", group_post_path(post.group,post),method: :delete, class: :"btn btn-danger btn-xs") %>
-          <% end %>
-        </td>
+        <td><%= post.user.email %></td>
       </tr>
     <% end %>
   </tbody>

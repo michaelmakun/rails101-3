@@ -1,0 +1,22 @@
+<h1 class="text-center">我加入的群组</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>群组名称</th>
+      <th>创建时间</th>
+      <th>创建者</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td><%= group.id %></td>
+        <td><%= link_to(group.title, group_path(group)) %></td>
+        <td><%= group.created_at %></td>
+        <td><%= group.user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

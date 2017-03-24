@@ -5,7 +5,14 @@
 </p>
 
 <div class="pull-right">
-  <%= link_to("新增文章", new_group_post_path(@group), class: :"btn btn-primary") %>
+  <% if current_user.is_member_of?(@group) %>
+    <%= link_to("退出群组", quit_group_path,method: :post, class: :'btn btn-danger') %>
+    <label class="label label-success">群组成员</label>
+    <%= link_to("新增文章", new_group_post_path(@group), class: :"btn btn-primary") %>
+  <% else %>
+    <%= link_to("加入群组", join_group_path, method: :post, class: :"btn btn-info") %>
+    <label class="label label-warning">不是群组成员</label>
+  <% end %>
 </div>
 
 <table class="table">

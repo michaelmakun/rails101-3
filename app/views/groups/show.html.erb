@@ -24,8 +24,10 @@
         <td><%= post.content %></td>
         <td><%= post.created_at %></td>
         <td>
-          <%= link_to("编缉文章", edit_group_post_path(post.group,post), class: :"btn btn-success btn-xs") %>
-          <%= link_to("删除文章", group_post_path(post.group,post),method: :delete, class: :"btn btn-danger btn-xs") %>
+          <% if current_user && current_user == post.user %>
+            <%= link_to("编缉文章", edit_group_post_path(post.group,post), class: :"btn btn-success btn-xs") %>
+            <%= link_to("删除文章", group_post_path(post.group,post),method: :delete, class: :"btn btn-danger btn-xs") %>
+          <% end %>
         </td>
       </tr>
     <% end %>
